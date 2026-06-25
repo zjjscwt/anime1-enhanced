@@ -1,7 +1,7 @@
 // ==UserScript==
-// @name         Anime1.me 增強2026
-// @version      3.11.0
-// @description  UI重構+封麵顯示+收藏夾+首頁無限滾動+觀看記錄+播放記憶+獨立播放頁跳轉+選集整合+播放器快捷鍵
+// @name         Anime1.me Enhanced
+// @version      4.0.3
+// @description  封面+簡中繁中名搜索+收藏夾+觀看記錄+選集+快捷鍵+播放記憶
 // @author       Ryan
 // @match        https://anime1.me/*
 // @grant        GM_xmlhttpRequest
@@ -10,12 +10,9 @@
 // @grant        GM_deleteValue
 // @grant        GM_listValues
 // @connect      *.bgm.tv
-// @connect      api.bgm.tv
-// @connect      api.themoviedb.org
 // @connect      image.tmdb.org
 // @connect      anime1.me
 // @connect      raw.githubusercontent.com
-// @connect      fastly.jsdelivr.net
 // @run-at       document-start
 // @icon         https://anime1.me/favicon-32x32.png
 // @license      MIT
@@ -39,7 +36,7 @@
     const BGM_USER_AGENT = 'Anime1Enhancer/3.0.1 (https://anime1.me/)';
     const WATCH_PROGRESS_STORAGE_KEY = 'ae_watch_progress_v1';
     const FAVORITES_STORAGE_KEY = 'ae_favorites_v1';
-    const ENHANCED_JSON_URL = 'https://raw.githubusercontent.com/zjjscwt/anime1-enhanced/main/animelist-enhanced.json';
+    const ENHANCED_JSON_URL = 'https://raw.githubusercontent.com/zjjscwt/anime1-enhanced/database/animelist-enhanced.json';
 
     // ===================== CORE HELPERS =====================
 
