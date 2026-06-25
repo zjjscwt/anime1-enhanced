@@ -1,0 +1,40 @@
+name: Auto Update Enhanced Anime1 Catalog
+
+on:
+  schedule:
+    - cron: '0 */2 * * *' # Runs every 6 hours
+  workflow_dispatch: # Allows manual trigger from GitHub UI
+
+permissions:
+  contents: write # Required for committing changes back
+
+jobs:
+  update-catalog:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v4
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      - name: Run Catalog Update Script
+        env:
+          TMDB_API_KEY: ${{ secrets.TMDB_API_KEY }}
+        run: node update_catalog.js
+
+      - name: Commit and Push Changes
+        run: |
+          git config --global user.name "github-actions[bot]"
+          git config --global user.email "github-actions[bot]@users.noreply.github.com"
+          git add animelist-enhanced.json
+          # Check if there are changes to commit
+          if ! git diff-index --quiet HEAD; then
+            git commit -m "Auto-update animelist-enhanced.json [skip ci]"
+            git push
+          else
+            echo "No changes in animelist-enhanced.json, skipping push."
+          fi
