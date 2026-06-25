@@ -2,7 +2,7 @@ const fs = require('fs');
 const https = require('https');
 const path = require('path');
 
-const TMDB_API_KEY = process.env.TMDB_API_KEY || '8baba8ab6b8bbe247645bcae7df63d0d'; // Fallback to oil-monkey's built-in key
+const TMDB_API_KEY = process.env.TMDB_API_KEY;
 const ENHANCED_FILE = path.join(__dirname, 'animelist-enhanced.json');
 
 // --- Helper: HTTPS requests (with redirection support) ---
@@ -547,10 +547,10 @@ async function fetchCategoryEpisodes(catId) {
     for (let i = 0; i < maxPages; i++) {
         try {
             const html = await fetchUrl(pageUrl);
-            
+
             const articleRegex = /<article[^>]*>([\s\S]*?)<\/article>/gi;
             const linkRegex = /<h2 class="entry-title"><a href="https:\/\/anime1\.me\/(\d+)"[^>]*>([\s\S]*?)<\/a><\/h2>/i;
-            
+
             let match;
             let pageEps = [];
             while ((match = articleRegex.exec(html)) !== null) {
@@ -569,7 +569,7 @@ async function fetchCategoryEpisodes(catId) {
                 }
             }
             episodes.push(...pageEps);
-            
+
             // Check for next page
             const nextLinkRegex = /<div class="nav-previous"><a href="([^"]+)"[^>]*>上一頁/i;
             const nextMatch = html.match(nextLinkRegex);
@@ -583,14 +583,14 @@ async function fetchCategoryEpisodes(catId) {
             break;
         }
     }
-    
+
     // Default epNums for episodes without [xx] in their titles
     episodes.forEach((ep, idx) => {
         if (ep.epNum === null) {
             ep.epNum = episodes.length - idx;
         }
     });
-    
+
     // Sort in chronological order (oldest post first, which corresponds to EP 01)
     episodes.reverse();
     return episodes;
