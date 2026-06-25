@@ -39,8 +39,7 @@
     const BGM_USER_AGENT = 'Anime1Enhancer/3.0.1 (https://anime1.me/)';
     const WATCH_PROGRESS_STORAGE_KEY = 'ae_watch_progress_v1';
     const FAVORITES_STORAGE_KEY = 'ae_favorites_v1';
-    const ENHANCED_JSON_URL = 'https://fastly.jsdelivr.net/gh/zjjscwt/anime1-enhanced@main/animelist-enhanced.json';
-    const ENHANCED_JSON_URL_FALLBACK = 'https://raw.githubusercontent.com/zjjscwt/anime1-enhanced/main/animelist-enhanced.json';
+    const ENHANCED_JSON_URL = 'https://raw.githubusercontent.com/zjjscwt/anime1-enhanced/main/animelist-enhanced.json';
 
     // ===================== CORE HELPERS =====================
 
@@ -106,21 +105,29 @@
                             <span>简体中文</span>
                         </label>
                     </div>
-                </div>
-                <div class="ae-modal-field">
                     <p style="font-size:13px; color:var(--ae-text-secondary); line-height:1.6; margin-bottom:12px;">封面來源：TMDB；評分來源：Bangumi (BGM.tv)。</p>
                     <p style="font-size:13px; color:var(--ae-text-secondary); line-height:1.6; margin-bottom:12px;">注：在简体中文模式下，部分封面没有简体版，仍会回退为繁体封面</p>
+                </div>
+                <div class="ae-modal-field" style="margin-bottom:16px;">
+                    <label style="display:block; font-size:14px; font-weight:600; margin-bottom:8px; color:#ddd6fe;">收藏夾備份與還原：</label>
+                    <div class="ae-flex-row" style="gap:10px;">
+                        <button type="button" id="ae-export-fav" class="ae-modal-btn" style="flex:1;">匯出收藏夾</button>
+                        <button type="button" id="ae-import-fav" class="ae-modal-btn" style="flex:1;">匯入收藏夾</button>
+                        <input type="file" id="ae-import-fav-file" accept=".json" style="display:none;">
+                    </div>
+                </div>
+                <div class="ae-modal-field">
                     <div class="ae-modal-shortcuts">
                         <h3>播放器快捷鍵說明：</h3>
                         <ul>
-                            <li><b>W</b>：切換/退出 網頁全屏</li>
-                            <li><b>S 鍵</b>：輪流切換播放倍速</li>
-                            <li><b>S + ↑ / ↓</b>：微調倍速 (+/- 0.1x)</li>
+                            <li><b>W</b>：網頁全屏</li>
                             <li><b>Space</b>：播放 / 暫停</li>
-                            <li><b>F</b>：進入 / 退出 系統全屏</li>
-                            <li><b>M</b>：靜音 / 取消靜音</li>
-                            <li><b>← / →</b>：快退 / 快進 5 秒</li>
-                            <li><b>↑ / ↓</b>：增加 / 減少 音量</li>
+                            <li><b>S 鍵</b>：切換倍速</li>
+                            <li><b>F</b>：系統全屏</li>
+                            <li><b>S+↑/↓</b>：微調倍速</li>
+                            <li><b>M</b>：切換靜音</li>
+                            <li><b>← / →</b>：快退 / 快進</li>
+                            <li><b>↑ / ↓</b>：調整音量</li>
                         </ul>
                     </div>
                 </div>
@@ -180,6 +187,73 @@
                     alert('清除失敗：' + e.message);
                 }
             }
+        });
+
+        // 匯出與匯入收藏夾
+        overlay.querySelector('#ae-export-fav').addEventListener('click', () => {
+            try {
+                const favData = getFavoritesData();
+                const backup = {
+                    type: 'anime1_enhanced_backup',
+                    version: '1.0',
+                    exportedAt: new Date().toISOString(),
+                    data: favData
+                };
+                const blob = new Blob([JSON.stringify(backup, null, 2)], { type: 'application/json' });
+                const url = URL.createObjectURL(blob);
+                const a = document.createElement('a');
+                a.href = url;
+                a.download = `anime1_favorites_${new Date().toISOString().slice(0, 10)}.json`;
+                document.body.appendChild(a);
+                a.click();
+                document.body.removeChild(a);
+                URL.revokeObjectURL(url);
+            } catch (e) {
+                alert('匯出失敗：' + e.message);
+            }
+        });
+
+        const fileInput = overlay.querySelector('#ae-import-fav-file');
+        overlay.querySelector('#ae-import-fav').addEventListener('click', () => {
+            fileInput.click();
+        });
+
+        fileInput.addEventListener('change', (e) => {
+            const file = e.target.files[0];
+            if (!file) return;
+
+            const reader = new FileReader();
+            reader.onload = (event) => {
+                try {
+                    const backup = JSON.parse(event.target.result);
+                    if (backup.type !== 'anime1_enhanced_backup') {
+                        throw new Error('無效的備份檔案格式。');
+                    }
+                    const data = backup.data;
+                    if (!data || !Array.isArray(data.categories) || typeof data.items !== 'object') {
+                        throw new Error('備份檔案數據損壞。');
+                    }
+
+                    // Validate and fix default category if missing
+                    if (!data.categories.find(c => c.id === 'default')) {
+                        data.categories.unshift({ id: 'default', name: '默認分類', isDefault: true });
+                    }
+
+                    if (confirm('匯入備份將會覆蓋您目前的收藏夾數據，確定要繼續嗎？')) {
+                        setFavoritesData(data);
+                        alert('收藏夾匯入成功，頁面即將重新整理。');
+                        location.reload();
+                    }
+                } catch (err) {
+                    alert('匯入失敗：' + err.message);
+                }
+                fileInput.value = '';
+            };
+            reader.onerror = () => {
+                alert('讀取檔案失敗。');
+                fileInput.value = '';
+            };
+            reader.readAsText(file);
         });
     }
 
@@ -592,8 +666,8 @@
                 try {
                     responseText = await fetchCatalog(ENHANCED_JSON_URL);
                 } catch (e) {
-                    console.warn('[Anime1 Enhancer] Failed to load from primary URL, trying fallback:', e.message);
-                    responseText = await fetchCatalog(ENHANCED_JSON_URL_FALLBACK);
+                    console.warn('[Anime1 Enhancer] Failed to load enhanced catalog from GitHub:', e.message);
+                    throw e;
                 }
 
                 data = JSON.parse(responseText);
@@ -765,10 +839,17 @@
 
 
         /* Unified Shortcut Help Styles */
-        .ae-modal-shortcuts { margin-top:16px; border-top:1px solid var(--ae-border-light); padding-top:12px; }
-        .ae-modal-shortcuts h3 { font-size:14px; color:#ddd6fe; margin-bottom:10px; font-weight:600; }
-        .ae-modal-shortcuts ul { font-size:12px; color:var(--ae-text-secondary); list-style:none; padding:0; margin:0; line-height:2.0; }
-        .ae-modal-shortcuts b { color:var(--ae-primary); font-weight:700; width:65px; display:inline-block; font-family: inherit; }
+        .ae-modal-shortcuts { margin-top:12px; border-top:1px solid var(--ae-border-light); padding-top:12px; }
+        .ae-modal-shortcuts h3 { font-size:14px; color:#ddd6fe; margin-bottom:8px; font-weight:600; }
+        .ae-modal-shortcuts ul { display: grid; grid-template-columns: 1fr 1fr; gap: 6px 16px; list-style:none; padding:0; margin:0; }
+        @media (max-width: 480px) {
+            .ae-modal-shortcuts ul {
+                grid-template-columns: 1fr;
+                gap: 6px;
+            }
+        }
+        .ae-modal-shortcuts li { font-size:12px; color:var(--ae-text-secondary); line-height:1.5; display:flex; align-items:center; }
+        .ae-modal-shortcuts b { color:var(--ae-primary); font-weight:700; width:68px; display:inline-block; font-family: inherit; }
 
         /* Global Toast */
         .ae-toast {
@@ -919,7 +1000,6 @@
 
         // --- Data Extraction for Dropdowns ---
         const years = [...new Set(animeList.map(a => a.year))].filter(Boolean).sort().reverse();
-        const subs = [...new Set(animeList.map(a => a.sub))].filter(Boolean).sort((a, b) => a.localeCompare(b));
 
         // Build UI
         const container = document.getElementById('anime-enhanced-home');
@@ -931,7 +1011,7 @@
                         <svg class="ae-search-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                             <circle cx="11" cy="11" r="8"></circle><path d="m21 21-4.35-4.35"></path>
                         </svg>
-                        <input type="text" id="ae-search-input" placeholder="搜尋動畫、年份或字幕組..." autocomplete="off">
+                        <input type="text" id="ae-search-input" placeholder="搜尋動畫或年份..." autocomplete="off">
                         <div class="ae-search-count"><span id="ae-visible-count">0</span> / ${animeList.length}</div>
                     </div>
                 </div>
@@ -963,18 +1043,11 @@
                             <option value="completed">🌚 已完結</option>
                         </select>
                     </div>
-                    <div class="ae-filter-group">
+                    <div class="ae-filter-group" style="padding-right:4px">
                         <span class="ae-filter-label">年份：</span>
                         <select id="ae-year-select" class="ae-select ae-filter-select">
                             <option value="">全部年份</option>
                             ${years.map(y => '<option value="' + y + '">' + y + ' 年</option>').join('')}
-                        </select>
-                    </div>
-                    <div class="ae-filter-group" style="padding-right:4px">
-                        <span class="ae-filter-label">字幕組：</span>
-                        <select id="ae-sub-select" class="ae-select ae-filter-select">
-                            <option value="">全部</option>
-                            ${subs.map(s => '<option value="' + s + '">' + s + '</option>').join('')}
                         </select>
                     </div>
                 </div>
@@ -1002,7 +1075,6 @@
         let currentFilter = 'all'; // View: all, continue, favorites
         let currentStatus = 'all'; // Status: all, airing, completed
         let currentYear = '';
-        let currentSub = '';
         let currentSortMode = 'newest';
         let currentFavCategory = '';
 
@@ -1088,11 +1160,10 @@
                     (currentStatus === 'airing' && isAiring) ||
                     (currentStatus === 'completed' && !isAiring);
 
-                // Dimension 3: Detailed Filters (Year & Sub)
+                // Dimension 3: Detailed Filters (Year)
                 const matchesYear = !currentYear || a.year === currentYear;
-                const matchesSub = !currentSub || a.sub === currentSub;
 
-                return matchesSearch && matchesView && matchesStatus && matchesYear && matchesSub;
+                return matchesSearch && matchesView && matchesStatus && matchesYear;
             });
 
             // Final Sorting
@@ -1238,7 +1309,6 @@
         document.getElementById('ae-sort-select')?.addEventListener('change', (e) => { currentSortMode = e.target.value; filterAndRender(); });
         document.getElementById('ae-status-select')?.addEventListener('change', (e) => { currentStatus = e.target.value; filterAndRender(); });
         document.getElementById('ae-year-select')?.addEventListener('change', (e) => { currentYear = e.target.value; filterAndRender(); });
-        document.getElementById('ae-sub-select')?.addEventListener('change', (e) => { currentSub = e.target.value; filterAndRender(); });
 
         document.querySelectorAll('.ae-segment-btn').forEach(btn => {
             btn.addEventListener('click', () => {
