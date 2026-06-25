@@ -36,7 +36,7 @@
     const BGM_USER_AGENT = 'Anime1Enhancer/3.0.1 (https://anime1.me/)';
     const WATCH_PROGRESS_STORAGE_KEY = 'ae_watch_progress_v1';
     const FAVORITES_STORAGE_KEY = 'ae_favorites_v1';
-    const ENHANCED_JSON_URL = 'https://raw.githubusercontent.com/zjjscwt/anime1-enhanced/database/animelist-enhanced.json';
+    const ENHANCED_JSON_URL = 'https://raw.githubusercontent.com/zjjscwt/anime1-enhanced/main/animelist-enhanced.json';
 
     // ===================== CORE HELPERS =====================
 
