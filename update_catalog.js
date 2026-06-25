@@ -408,36 +408,24 @@ function mapEnhancedItem(item) {
     if (!item) return null;
     if (item.catId) return item; // Already full-length format
 
-    // Support dual mapping for older compressed keys and new single-letter keys
-    const z = item.z !== undefined ? item.z : item.zh;
-    const t = item.t !== undefined ? item.t : item.eps;
-    const s = item.s !== undefined ? item.s : item.sc;
-    const c = item.c !== undefined ? item.c : item.img;
-    const f = item.f !== undefined ? item.f : item.cn;
-    const b = item.b !== undefined ? item.b : item.bg;
-    const l = item.l !== undefined ? item.l : item.list;
-
     return {
         catId: item.id,
         name: item.n,
-        nameZhHans: z || item.n,
-        episodes: t || '',
+        nameZhHans: item.z || item.n,
+        episodes: item.t || '',
         year: item.y || '',
         sub: '',
-        score: (s !== undefined && s !== null) ? s : null,
-        coverUrl: c ? (c.startsWith('/') ? 'https://image.tmdb.org/t/p/w500' + c : c) : null,
-        "cn-coverURL": f ? (f.startsWith('/') ? 'https://image.tmdb.org/t/p/w500' + f : f) : null,
-        backdropUrl: b ? (b.startsWith('/') ? 'https://image.tmdb.org/t/p/w1280' + b : b) : null,
-        episodesList: typeof l === 'string' ? (l ? l.split(',').map(s => {
+        score: (item.s !== undefined && item.s !== null) ? item.s : null,
+        coverUrl: item.c ? (item.c.startsWith('/') ? 'https://image.tmdb.org/t/p/w500' + item.c : item.c) : null,
+        "cn-coverURL": item.f ? (item.f.startsWith('/') ? 'https://image.tmdb.org/t/p/w500' + item.f : item.f) : null,
+        backdropUrl: item.b ? (item.b.startsWith('/') ? 'https://image.tmdb.org/t/p/w1280' + item.b : item.b) : null,
+        episodesList: typeof item.l === 'string' ? (item.l ? item.l.split(',').map(s => {
             const [p, e] = s.split(':');
             return {
                 postId: p,
                 epNum: e !== '' ? Number(e) : null
             };
-        }) : []) : (Array.isArray(l) ? l.map(ep => ({
-            postId: ep.p || ep.postId,
-            epNum: ep.e !== undefined ? ep.e : (ep.epNum !== undefined ? ep.epNum : null)
-        })) : [])
+        }) : []) : []
     };
 }
 

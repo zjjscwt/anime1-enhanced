@@ -14,6 +14,8 @@
 // @connect      api.themoviedb.org
 // @connect      image.tmdb.org
 // @connect      anime1.me
+// @connect      raw.githubusercontent.com
+// @connect      fastly.jsdelivr.net
 // @run-at       document-start
 // @icon         https://anime1.me/favicon-32x32.png
 // @license      MIT
@@ -37,7 +39,8 @@
     const BGM_USER_AGENT = 'Anime1Enhancer/3.0.1 (https://anime1.me/)';
     const WATCH_PROGRESS_STORAGE_KEY = 'ae_watch_progress_v1';
     const FAVORITES_STORAGE_KEY = 'ae_favorites_v1';
-    const ENHANCED_JSON_URL = 'https://raw.githubusercontent.com/zjjsc/anime1/main/animelist-enhanced.json';
+    const ENHANCED_JSON_URL = 'https://fastly.jsdelivr.net/gh/zjjscwt/anime1-enhanced@main/animelist-enhanced.json';
+    const ENHANCED_JSON_URL_FALLBACK = 'https://raw.githubusercontent.com/zjjscwt/anime1-enhanced/main/animelist-enhanced.json';
 
     // ===================== CORE HELPERS =====================
 
@@ -92,14 +95,21 @@
                 <button type="button" class="ae-modal-close" aria-label="關閉">×</button>
                 <h2 class="ae-modal-title" id="ae-modal-title">Anime1 增強設定</h2>
                 <div class="ae-modal-field" style="margin-bottom:16px;">
-                    <label for="ae-lang-select" style="display:block; font-size:14px; font-weight:600; margin-bottom:6px; color:#ddd6fe;">動漫名稱顯示語言：</label>
-                    <select id="ae-lang-select" class="ae-select" style="width:100%; border-radius:10px; background:var(--ae-bg-input); border:1px solid var(--ae-border-primary); color:var(--ae-text-primary); padding:8px 12px;">
-                        <option value="zh-hans" ${initialLang === 'zh-hans' ? 'selected' : ''}>简体中文 (TMDB/Bangumi)</option>
-                        <option value="zh-hant" ${initialLang === 'zh-hant' ? 'selected' : ''}>繁體中文 (原站台譯)</option>
-                    </select>
+                    <label style="display:block; font-size:14px; font-weight:600; margin-bottom:8px; color:#ddd6fe;">動漫名稱及封面顯示語言：</label>
+                    <div class="ae-radio-group">
+                        <label class="ae-radio-label ${initialLang === 'zh-hant' ? 'is-selected' : ''}">
+                            <input type="radio" name="ae-lang" value="zh-hant" ${initialLang === 'zh-hant' ? 'checked' : ''} class="ae-radio-input">
+                            <span>繁體中文</span>
+                        </label>
+                        <label class="ae-radio-label ${initialLang === 'zh-hans' ? 'is-selected' : ''}">
+                            <input type="radio" name="ae-lang" value="zh-hans" ${initialLang === 'zh-hans' ? 'checked' : ''} class="ae-radio-input">
+                            <span>简体中文</span>
+                        </label>
+                    </div>
                 </div>
                 <div class="ae-modal-field">
-                    <p style="font-size:13px; color:var(--ae-text-secondary); line-height:1.6; margin-bottom:12px;">封面來源：TMDB（內建 API Key）；評分來源：Bangumi (BGM.tv)。</p>
+                    <p style="font-size:13px; color:var(--ae-text-secondary); line-height:1.6; margin-bottom:12px;">封面來源：TMDB；評分來源：Bangumi (BGM.tv)。</p>
+                    <p style="font-size:13px; color:var(--ae-text-secondary); line-height:1.6; margin-bottom:12px;">注：在简体中文模式下，部分封面没有简体版，仍会回退为繁体封面</p>
                     <div class="ae-modal-shortcuts">
                         <h3>播放器快捷鍵說明：</h3>
                         <ul>
@@ -116,7 +126,7 @@
                 </div>
                 <div id="ae-modal-status" class="ae-modal-status"></div>
                 <div class="ae-modal-actions">
-                    <button type="button" id="ae-clear-bgm-cache" class="ae-modal-btn ae-modal-btn-danger">清除增強數據緩存</button>
+                    <button type="button" id="ae-clear-bgm-cache" class="ae-modal-btn ae-modal-btn-danger">清除緩存</button>
                     <span class="ae-modal-actions-spacer"></span>
                     <button type="button" id="ae-close-settings" class="ae-modal-btn ae-modal-btn-primary">確定</button>
                 </div>
@@ -125,15 +135,30 @@
 
         document.body.appendChild(overlay);
 
-        const langSelect = overlay.querySelector('#ae-lang-select');
-        langSelect.addEventListener('change', (e) => {
-            setDisplayLanguage(e.target.value);
+        let currentLang = initialLang;
+        const radioLabels = overlay.querySelectorAll('.ae-radio-label');
+        const radios = overlay.querySelectorAll('input[name="ae-lang"]');
+        radios.forEach(radio => {
+            radio.addEventListener('change', (e) => {
+                currentLang = e.target.value;
+                setDisplayLanguage(currentLang);
+
+                // Update selection classes on parent labels
+                radioLabels.forEach(label => {
+                    const input = label.querySelector('input');
+                    if (input.checked) {
+                        label.classList.add('is-selected');
+                    } else {
+                        label.classList.remove('is-selected');
+                    }
+                });
+            });
         });
 
         const close = () => {
             document.removeEventListener('keydown', onKeydown);
             overlay.remove();
-            if (langSelect && langSelect.value !== initialLang) {
+            if (currentLang !== initialLang) {
                 location.reload();
             }
         };
@@ -509,36 +534,24 @@
         if (!item) return null;
         if (item.catId) return item; // Already full-length format
 
-        // Support dual mapping for older compressed keys and new single-letter keys
-        const z = item.z !== undefined ? item.z : item.zh;
-        const t = item.t !== undefined ? item.t : item.eps;
-        const s = item.s !== undefined ? item.s : item.sc;
-        const c = item.c !== undefined ? item.c : item.img;
-        const f = item.f !== undefined ? item.f : item.cn;
-        const b = item.b !== undefined ? item.b : item.bg;
-        const l = item.l !== undefined ? item.l : item.list;
-
         return {
             catId: item.id,
             name: item.n,
-            nameZhHans: z || item.n,
-            episodes: t || '',
+            nameZhHans: item.z || item.n,
+            episodes: item.t || '',
             year: item.y || '',
             sub: '',
-            score: (s !== undefined && s !== null) ? s : null,
-            coverUrl: c ? (c.startsWith('/') ? 'https://image.tmdb.org/t/p/w500' + c : c) : null,
-            "cn-coverURL": f ? (f.startsWith('/') ? 'https://image.tmdb.org/t/p/w500' + f : f) : null,
-            backdropUrl: b ? (b.startsWith('/') ? 'https://image.tmdb.org/t/p/w1280' + b : b) : null,
-            episodesList: typeof l === 'string' ? (l ? l.split(',').map(s => {
+            score: (item.s !== undefined && item.s !== null) ? item.s : null,
+            coverUrl: item.c ? (item.c.startsWith('/') ? 'https://image.tmdb.org/t/p/w500' + item.c : item.c) : null,
+            "cn-coverURL": item.f ? (item.f.startsWith('/') ? 'https://image.tmdb.org/t/p/w500' + item.f : item.f) : null,
+            backdropUrl: item.b ? (item.b.startsWith('/') ? 'https://image.tmdb.org/t/p/w1280' + item.b : item.b) : null,
+            episodesList: typeof item.l === 'string' ? (item.l ? item.l.split(',').map(s => {
                 const [p, e] = s.split(':');
                 return {
                     postId: p,
                     epNum: e !== '' ? Number(e) : null
                 };
-            }) : []) : (Array.isArray(l) ? l.map(ep => ({
-                postId: ep.p || ep.postId,
-                epNum: ep.e !== undefined ? ep.e : (ep.epNum !== undefined ? ep.epNum : null)
-            })) : [])
+            }) : []) : []
         };
     }
 
@@ -549,8 +562,8 @@
             const now = Date.now();
             let data = null;
 
-            // 1 hour cache to avoid unnecessary network requests, invalidating format if no "id" and "l" keys
-            if (cache && (now - cacheTime < 60 * 60 * 1000) && cache.includes('"id"') && cache.includes('"l":')) {
+            // 1 hour cache to avoid unnecessary network requests
+            if (cache && (now - cacheTime < 60 * 60 * 1000)) {
                 try {
                     data = JSON.parse(cache);
                 } catch (e) {
@@ -559,19 +572,30 @@
             }
 
             if (!data) {
-                const responseText = await new Promise((resolve, reject) => {
-                    GM_xmlhttpRequest({
-                        method: 'GET',
-                        url: ENHANCED_JSON_URL,
-                        timeout: 5000,
-                        onload: (res) => {
-                            if (res.status === 200) resolve(res.responseText);
-                            else reject(new Error(`Status ${res.status}`));
-                        },
-                        onerror: reject,
-                        ontimeout: () => reject(new Error('Timeout'))
+                const fetchCatalog = (url) => {
+                    return new Promise((resolve, reject) => {
+                        GM_xmlhttpRequest({
+                            method: 'GET',
+                            url: url,
+                            timeout: 5000,
+                            onload: (res) => {
+                                if (res.status === 200) resolve(res.responseText);
+                                else reject(new Error(`Status ${res.status}`));
+                            },
+                            onerror: reject,
+                            ontimeout: () => reject(new Error('Timeout'))
+                        });
                     });
-                });
+                };
+
+                let responseText;
+                try {
+                    responseText = await fetchCatalog(ENHANCED_JSON_URL);
+                } catch (e) {
+                    console.warn('[Anime1 Enhancer] Failed to load from primary URL, trying fallback:', e.message);
+                    responseText = await fetchCatalog(ENHANCED_JSON_URL_FALLBACK);
+                }
+
                 data = JSON.parse(responseText);
                 GM_setValue('ae_enhanced_catalog', responseText);
                 GM_setValue('ae_enhanced_catalog_time', now);
@@ -685,11 +709,45 @@
         .ae-modal-steps a { color: var(--ae-primary); text-decoration: underline; }
 
         /* Form Controls */
-        .ae-modal-field input, .ae-fav-rename-input {
+        .ae-modal-field input:not([type="radio"]), .ae-fav-rename-input {
             width: 100%; height: 38px; border-radius: 10px; border: 1px solid var(--ae-border-primary);
             background: var(--ae-bg-input); color: var(--ae-text-primary); padding: 0 12px; outline: none; font-family: inherit;
         }
-        .ae-modal-field input:focus, .ae-fav-rename-input:focus { border-color: var(--ae-primary); box-shadow: 0 0 0 3px rgba(var(--ae-primary-rgb), 0.2); }
+        .ae-modal-field input:not([type="radio"]):focus, .ae-fav-rename-input:focus { border-color: var(--ae-primary); box-shadow: 0 0 0 3px rgba(var(--ae-primary-rgb), 0.2); }
+
+        /* Radio Group styles */
+        .ae-radio-group { display: flex; gap: 12px; margin-top: 6px; }
+        .ae-radio-label {
+            flex: 1;
+            padding: 10px 14px;
+            border-radius: 10px;
+            background: var(--ae-bg-surface);
+            border: 1px solid var(--ae-border-light);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            transition: all 0.2s ease;
+            cursor: pointer;
+            user-select: none;
+            color: var(--ae-text-primary);
+            font-size: 14px;
+        }
+        .ae-radio-label:hover {
+            background: var(--ae-bg-hover);
+            border-color: rgba(var(--ae-primary-rgb), 0.5);
+        }
+        .ae-radio-label.is-selected {
+            background: rgba(var(--ae-primary-rgb), 0.15);
+            border-color: var(--ae-primary);
+            box-shadow: 0 0 12px rgba(var(--ae-primary-rgb), 0.2);
+        }
+        .ae-radio-input {
+            accent-color: var(--ae-primary);
+            width: 18px;
+            height: 18px;
+            cursor: pointer;
+            margin: 0;
+        }
         .ae-modal-btn { height: 36px; border-radius: 10px; border: 1px solid transparent; padding: 0 12px; font-weight: 600; cursor: pointer; transition: 0.2s; background: rgba(30,41,59,0.48); color: var(--ae-text-primary); }
         .ae-modal-btn-primary { background: var(--ae-primary-grad); color: #fff; }
         .ae-modal-btn-primary:hover { filter: brightness(1.1); }
@@ -818,8 +876,8 @@
                         if (catId === 0 || !externalUrl) {
                             const urlMatch = rawNameHtml.match(/href="([^"]+)"/);
                             if (urlMatch) {
-                                  externalUrl = urlMatch[1];
-                                  if (externalUrl.startsWith('//')) externalUrl = 'https:' + externalUrl;
+                                externalUrl = urlMatch[1];
+                                if (externalUrl.startsWith('//')) externalUrl = 'https:' + externalUrl;
                             }
                         }
 
@@ -2181,10 +2239,10 @@
                     const btn = document.createElement('button');
                     btn.className = 'ap-ep-btn' + (isCurrent ? ' active' : '');
                     btn.textContent = Number.isFinite(ep.epNum) ? String(ep.epNum).padStart(2, '0') : '??';
-                    
+
                     // Tooltip uses language-specific title + ep number constructed dynamically, avoiding Traditional title leaks
                     btn.title = Number.isFinite(ep.epNum) ? `${displayName} [${String(ep.epNum).padStart(2, '0')}]` : (ep.title || '');
-                    
+
                     btn.addEventListener('click', (e) => {
                         e.preventDefault();
                         if (isCurrent) return; // Already on this episode
@@ -2538,6 +2596,12 @@
         } else {
             // Not a supported page, remove hide
             document.getElementById('ae-initial-hide')?.remove();
+        }
+
+        // Show settings dialog on first run
+        if (!GM_getValue('ae_first_run_done', false)) {
+            GM_setValue('ae_first_run_done', true);
+            openGeneralSettingsDialog();
         }
     }
 
