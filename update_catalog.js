@@ -777,7 +777,9 @@ async function run() {
     console.log(`Successfully completed processing ${enhancedList.length} items.`);
 }
 
-run().catch(err => {
+run().then(() => {
+    process.exit(0);
+}).catch(err => {
     console.error('Fatal execution error:', err);
     process.exit(1);
 });
