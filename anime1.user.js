@@ -1,6 +1,6 @@
 // ==UserScript==
-// @name         Anime1.me Enhanced
-// @version      4.0.3
+// @name         Anime1.me 增強2026
+// @version      4.0.4
 // @description  封面+簡中繁中名搜索+收藏夾+觀看記錄+選集+快捷鍵+播放記憶
 // @author       Ryan
 // @match        https://anime1.me/*
