@@ -668,7 +668,7 @@ async function run() {
         const hasAiredCountUnchanged = cachedItem && cachedItem.t === episodes;
 
         // Condition for reusing cache:
-        if (cachedItem && hasAiredCountUnchanged && (cachedItem.c !== undefined) && cachedItem.l && cachedItem.l.length > 0) {
+        if (cachedItem && hasAiredCountUnchanged && (cachedItem.c !== undefined) && (cachedItem.l !== undefined && cachedItem.l !== null)) {
             // Reuse cache, updating t and year, and ensuring no s is written
             enhancedList.push({
                 ...cachedItem,
@@ -763,6 +763,14 @@ async function run() {
     }
 
     console.log(`Successfully completed processing ${enhancedList.length} items.`);
+
+    // Write the final database to disk
+    try {
+        fs.writeFileSync(ENHANCED_FILE, JSON.stringify(enhancedList, null, 2), 'utf8');
+        console.log(`Successfully saved final catalog to ${ENHANCED_FILE}`);
+    } catch (writeErr) {
+        console.error(`[Write Error] Failed to write final catalog:`, writeErr.message);
+    }
 }
 
 run().then(() => {
