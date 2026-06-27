@@ -1,4 +1,4 @@
-# Anime1 Enhanced Database (`animelist-enhanced.json`)
+# Anime1 Enhanced Database
 
 本文件 `animelist-enhanced.json` 是针对 Anime1 官方动画列表（`animelist.json`）进行丰富与优化后的增强版数据库。它为油猴脚本（如 `anime1.user.js`）或其它第三方客户端提供了更完整的番剧元数据支持。
 
@@ -9,8 +9,6 @@
 - **番剧评分**：接入 Bangumi API 获取的评分数据。
 - **图片资源**：提供高质量的海报封面图（`coverUrl`）、简体中文定制封面（`cn-coverURL`）以及精美的背景图（`backdropUrl`）。
 - **选集列表**：包含每集在 Anime1.me 上的文章 Post ID 与对应的集数映射，方便直接跳转播放。
-- **高压缩率**：为了减少网络带宽消耗，所有字段均使用缩写键名，且选集列表经过扁平化拼接压缩。
-
 ---
 
 ## 📂 字段属性说明 (Top-Level Schema)
