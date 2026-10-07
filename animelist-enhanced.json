@@ -1,5 +1,77 @@
 [
   {
+    "id": 1764,
+    "n": "彈珠汽水瓶裡的千歲同學",
+    "z": "弹珠汽水瓶里的千岁同学",
+    "t": "連載中(13.5)",
+    "y": "2025",
+    "s": 4.1,
+    "c": "/b47qlIj7CNqa4yRRB6uA72e78eN.jpg",
+    "f": "/q6Hdvt4bVB8mBkv0vMtRJ9IPzzH.jpg",
+    "b": "/4BE1aoCu5mCG3ZJ7alNDQkB3oK4.jpg",
+    "l": "27002:1,27059:2,27114:3,27174:4,27232:5,27461:6,27527:7,27589:8,27648:9,27673:10,28452:11,28453:12,28454:13,30313:14"
+  },
+  {
+    "id": 1994,
+    "n": "冷淡的佐藤同學只對我撒嬌",
+    "z": "冷淡的佐藤同学只对我撒娇",
+    "t": "連載中(01)",
+    "y": "2026",
+    "s": 5.7,
+    "c": "/c1YUQPXPLf9jJLGRFxUD9fOLQ6t.jpg",
+    "f": null,
+    "b": "/ukHKDQO3ILHEAsZ6uXRCeT7tKlO.jpg",
+    "l": "30312:1"
+  },
+  {
+    "id": 1993,
+    "n": "被放逐的作弊賦予魔術師享受隨心所欲的第二人生。～不只是武器、我還能賦予萬物「強化點數」，且能照我的意思隨時解除，其他的人沒問題嗎？",
+    "z": "被流放的开挂魔术师讴歌随心所欲第二人生",
+    "t": "連載中(01)",
+    "y": "2026",
+    "s": 7.1,
+    "c": "/oVANcZHwfWRtnZF0UEtJeesRWiy.jpg",
+    "f": null,
+    "b": "/msusxF6ZPGnQmTGXU9iC4UJOohs.jpg",
+    "l": "30311:1"
+  },
+  {
+    "id": 1992,
+    "n": "超巡！超條前輩",
+    "z": "超巡！超条前辈",
+    "t": "連載中(01)",
+    "y": "2026",
+    "s": 6,
+    "c": "/nyKhYyqk9f5ttGV0qMTPYLeFkyP.jpg",
+    "f": null,
+    "b": "/ru9Nc9HBAUjTVjngbgNUCdKRNa0.jpg",
+    "l": "30310:1"
+  },
+  {
+    "id": 1991,
+    "n": "亂世千金倪亞·利斯頓 轉生為嬌弱千金的弒神武人華麗無雙錄",
+    "z": "乱世千金倪亚·利斯顿转生为娇弱千金的弑神武人华丽无双录",
+    "t": "連載中(01)",
+    "y": "2026",
+    "s": 6.8,
+    "c": "/3Wc5CjF7cJabDdN1hmwOfhUFaHu.jpg",
+    "f": "/b3G09ehxxquTWvBfc3qnlOjlB6m.jpg",
+    "b": "/aNqi7yWUU1blc8kvtfzrkrrYWEE.jpg",
+    "l": "30309:1"
+  },
+  {
+    "id": 1990,
+    "n": "Battle Spirits [Re] 絕界之空",
+    "z": "战斗之魂[Re] 绝界之空",
+    "t": "連載中(01)",
+    "y": "2026",
+    "s": 5.3,
+    "c": "/6jjfwGwjaLIGKstXq2XITgbddAX.jpg",
+    "f": null,
+    "b": "/9V4zVVKqy7g2n6Vxts2DmXxuPiU.jpg",
+    "l": "30308:1"
+  },
+  {
     "id": 1855,
     "n": "朱音落語",
     "z": "朱音落语",
@@ -399,10 +471,10 @@
     "id": 1970,
     "n": "FX戰士久留美",
     "z": "FX战士久留美",
-    "t": "連載中(01)",
+    "t": "連���中(01)",
     "y": "2026",
-    "s": 7.1,
-    "c": "/6Tf1ETXseEoNAMyofy3aRoJtqaR.jpg",
+    "s": 7,
+    "c": "/fm6Mzk8e1sGvuOasuCtWhdKl7xx.jpg",
     "f": null,
     "b": "/qFELvRyy0C0vxYcKBQEX7BDe4vO.jpg",
     "l": "30265:1"
@@ -2074,18 +2146,6 @@
     "f": null,
     "b": "/h4wBD8Lrq8hSAxd4fRgbIDTzDLJ.jpg",
     "l": "27695:1,27748:2,27827:3,27898:4,27962:5,28031:6,28087:7,28149:8,28218:9,28279:10,28345:11,28407:12,28455:13"
-  },
-  {
-    "id": 1764,
-    "n": "彈珠汽水瓶裡的千歲同學",
-    "z": "弹珠汽水瓶里的千岁同学",
-    "t": "1-13",
-    "y": "2025",
-    "s": 4.1,
-    "c": "/ibr0vzPc7XImKJ5kqPOxgsvZEKB.jpg",
-    "f": "/q6Hdvt4bVB8mBkv0vMtRJ9IPzzH.jpg",
-    "b": "/4BE1aoCu5mCG3ZJ7alNDQkB3oK4.jpg",
-    "l": "27002:1,27059:2,27114:3,27174:4,27232:5,27461:6,27527:7,27589:8,27648:9,27673:10,28452:11,28453:12,28454:13"
   },
   {
     "id": 1839,
