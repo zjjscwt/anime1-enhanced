@@ -1,5 +1,29 @@
 [
   {
+    "id": 1985,
+    "n": "學生會也有洞！",
+    "z": "学生会也有洞！",
+    "t": "連載中(02)",
+    "y": "2026",
+    "s": 6.7,
+    "c": "/4EgNPER5TRh2wrfM59gQF2BJGze.jpg",
+    "f": null,
+    "b": "/kuYMjcQ6BeLTBYUR1l1T8W8ZMcf.jpg",
+    "l": "30295:1,30337:2"
+  },
+  {
+    "id": 1978,
+    "n": "魔法★探險家",
+    "z": "魔法★探险家",
+    "t": "連載中(03)",
+    "y": "2026",
+    "s": 6,
+    "c": "/7V70UHOfMRef1vlsNX396MJQMmT.jpg",
+    "f": null,
+    "b": "/oxS6i62MRfIeXFKN2F3uEipKwt7.jpg",
+    "l": "30283:1,30285:2,30336:3"
+  },
+  {
     "id": 1976,
     "n": "至高之力",
     "z": "至高之力",
@@ -267,10 +291,10 @@
     "id": 1994,
     "n": "冷淡的佐藤同學只對我撒嬌",
     "z": "冷淡的佐藤同学只对我撒娇",
-    "t": "連載中(01)",
+    "t": "連��中(01)",
     "y": "2026",
-    "s": 5.7,
-    "c": "/c1YUQPXPLf9jJLGRFxUD9fOLQ6t.jpg",
+    "s": 5.5,
+    "c": "/9BmkXWYIOkNTgvI6RS83QbLkElh.jpg",
     "f": null,
     "b": "/ukHKDQO3ILHEAsZ6uXRCeT7tKlO.jpg",
     "l": "30312:1"
@@ -408,18 +432,6 @@
     "l": "30297:1"
   },
   {
-    "id": 1985,
-    "n": "學生會也有洞！",
-    "z": "学生会也有洞！",
-    "t": "連載中(01)",
-    "y": "2026",
-    "s": 6.7,
-    "c": "/4EgNPER5TRh2wrfM59gQF2BJGze.jpg",
-    "f": null,
-    "b": "/kuYMjcQ6BeLTBYUR1l1T8W8ZMcf.jpg",
-    "l": "30295:1"
-  },
-  {
     "id": 1984,
     "n": "來自遠方",
     "z": "来自远方",
@@ -538,18 +550,6 @@
     "f": null,
     "b": "/4ncuq4Qo0NrSZBnxM3PABeROyVT.jpg",
     "l": "30284:1"
-  },
-  {
-    "id": 1978,
-    "n": "魔法★探險家",
-    "z": "魔法★探险家",
-    "t": "連載中(02)",
-    "y": "2026",
-    "s": 6,
-    "c": "/7V70UHOfMRef1vlsNX396MJQMmT.jpg",
-    "f": null,
-    "b": "/oxS6i62MRfIeXFKN2F3uEipKwt7.jpg",
-    "l": "30283:1,30285:2"
   },
   {
     "id": 1975,
