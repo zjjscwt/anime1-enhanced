@@ -1,5 +1,41 @@
 [
   {
+    "id": 2009,
+    "n": "闇機 DARK MACHINE",
+    "z": "生化危机：无尽黑暗",
+    "t": "連載中(01)",
+    "y": "2021",
+    "s": 4.7,
+    "c": "/qgBpO1O3KnZGsJQxvh7zXvxa620.jpg",
+    "f": "/aXIpCv3E7VAd80AvrWNNP4G7Mla.jpg",
+    "b": "/uPHXbrh9jlq2XgfjjTFlkJfgtOQ.jpg",
+    "l": "30365:1"
+  },
+  {
+    "id": 1990,
+    "n": "Battle Spirits [Re] 絕界之空",
+    "z": "战斗之魂[Re] 绝界之空",
+    "t": "連載中(02)",
+    "y": "2026",
+    "s": 4.8,
+    "c": "/1lATIjNfnDshZQAElqRJeViqsi3.jpg",
+    "f": null,
+    "b": "/9V4zVVKqy7g2n6Vxts2DmXxuPiU.jpg",
+    "l": "30308:1,30364:2"
+  },
+  {
+    "id": 1991,
+    "n": "亂世千金倪亞·利斯頓 轉生為嬌弱千金的弒神武人華麗無雙錄",
+    "z": "乱世千金倪亚·利斯顿转生为娇弱千金的弑神武人华丽无双录",
+    "t": "連載中(02)",
+    "y": "2026",
+    "s": 6.7,
+    "c": "/3Wc5CjF7cJabDdN1hmwOfhUFaHu.jpg",
+    "f": "/b3G09ehxxquTWvBfc3qnlOjlB6m.jpg",
+    "b": "/aNqi7yWUU1blc8kvtfzrkrrYWEE.jpg",
+    "l": "30309:1,30363:2"
+  },
+  {
     "id": 1764,
     "n": "彈珠汽水瓶裡的千歲同學",
     "z": "弹珠汽水瓶里的千岁同学",
@@ -562,30 +598,6 @@
     "f": null,
     "b": "/aqETSDXdeYqcD1PPd2WBfeWtoct.jpg",
     "l": "30314:1"
-  },
-  {
-    "id": 1991,
-    "n": "亂世千金倪亞·利斯頓 轉生為嬌弱千金的弒神武人華麗無雙錄",
-    "z": "乱世千金倪亚·利斯顿转生为娇弱千金的弑神武人华丽无双录",
-    "t": "連載中(01)",
-    "y": "2026",
-    "s": 6.8,
-    "c": "/3Wc5CjF7cJabDdN1hmwOfhUFaHu.jpg",
-    "f": "/b3G09ehxxquTWvBfc3qnlOjlB6m.jpg",
-    "b": "/aNqi7yWUU1blc8kvtfzrkrrYWEE.jpg",
-    "l": "30309:1"
-  },
-  {
-    "id": 1990,
-    "n": "Battle Spirits [Re] 絕界之空",
-    "z": "战斗之魂[Re] 绝界之空",
-    "t": "連載中(01)",
-    "y": "2026",
-    "s": 5.2,
-    "c": "/1lATIjNfnDshZQAElqRJeViqsi3.jpg",
-    "f": null,
-    "b": "/9V4zVVKqy7g2n6Vxts2DmXxuPiU.jpg",
-    "l": "30308:1"
   },
   {
     "id": 1855,
