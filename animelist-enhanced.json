@@ -1,5 +1,53 @@
 [
   {
+    "id": 1975,
+    "n": "黑色五葉草 第二季",
+    "z": "黑色五叶草 第二季",
+    "t": "連載中(172)",
+    "y": "2026",
+    "s": 7.5,
+    "c": "/nVKgwReZVFXLkpOV7PxE8dvX7wh.jpg",
+    "f": null,
+    "b": "/qu9epTZh29fGUkY7ZYc9PVsv0Ig.jpg",
+    "l": "30281:171,30369:172"
+  },
+  {
+    "id": 1995,
+    "n": "偵探已經，死了。 第二季",
+    "z": "侦探已死 第二季",
+    "t": "連載中(02)",
+    "y": "2026",
+    "s": 5,
+    "c": "/dUjXDSSr9K2iREbdmXW3gnJIjcc.jpg",
+    "f": null,
+    "b": "/aqETSDXdeYqcD1PPd2WBfeWtoct.jpg",
+    "l": "30314:1,30368:2"
+  },
+  {
+    "id": 1996,
+    "n": "佐佐木與文鳥小嗶 第二季",
+    "z": "佐佐木与文鸟小哔 第二季",
+    "t": "連載中(02)",
+    "y": "2026",
+    "s": 5.8,
+    "c": "/7FulTDMbHO1ztYKwaP708DE9Nkv.jpg",
+    "f": null,
+    "b": "/xljpEwFQF6Rl1rU1w7SEs1pk3YE.jpg",
+    "l": "30316:1,30367:2"
+  },
+  {
+    "id": 1997,
+    "n": "世界最強的魔女，就此開始",
+    "z": "世界最强魔女，就此开始",
+    "t": "連載中(02)",
+    "y": "2026",
+    "s": 6.2,
+    "c": "/bPyxZhy9ikgICgCw5RomKNs22u3.jpg",
+    "f": "/pw9Ha86plPe344JED6ij85UPZKZ.jpg",
+    "b": "/bM9pGax5PQCvipy7zifscXsVJ8Z.jpg",
+    "l": "30317:1,30366:2"
+  },
+  {
     "id": 2009,
     "n": "闇機 DARK MACHINE",
     "z": "生化危机：无尽黑暗",
@@ -552,30 +600,6 @@
     "l": "30318:1"
   },
   {
-    "id": 1997,
-    "n": "世界最強的魔女，就此開始",
-    "z": "世界最强魔女，就此开始",
-    "t": "連載中(01)",
-    "y": "2026",
-    "s": 6.3,
-    "c": "/bPyxZhy9ikgICgCw5RomKNs22u3.jpg",
-    "f": "/pw9Ha86plPe344JED6ij85UPZKZ.jpg",
-    "b": "/bM9pGax5PQCvipy7zifscXsVJ8Z.jpg",
-    "l": "30317:1"
-  },
-  {
-    "id": 1996,
-    "n": "佐佐木與文鳥小嗶 第二季",
-    "z": "佐佐木与文鸟小哔 第二季",
-    "t": "連載中(01)",
-    "y": "2026",
-    "s": 6,
-    "c": "/7FulTDMbHO1ztYKwaP708DE9Nkv.jpg",
-    "f": null,
-    "b": "/xljpEwFQF6Rl1rU1w7SEs1pk3YE.jpg",
-    "l": "30316:1"
-  },
-  {
     "id": 1968,
     "n": "轉生就是劍 第二季",
     "z": "转生成为魔剑 第二季",
@@ -586,18 +610,6 @@
     "f": null,
     "b": "/fo5qwDAVqY7j2jmL350WKjk6kmi.jpg",
     "l": "30263:1,30315:2"
-  },
-  {
-    "id": 1995,
-    "n": "偵探已經，死了。 第二季",
-    "z": "侦探已死 第二季",
-    "t": "連載中(01)",
-    "y": "2026",
-    "s": 5,
-    "c": "/dUjXDSSr9K2iREbdmXW3gnJIjcc.jpg",
-    "f": null,
-    "b": "/aqETSDXdeYqcD1PPd2WBfeWtoct.jpg",
-    "l": "30314:1"
   },
   {
     "id": 1855,
@@ -634,18 +646,6 @@
     "f": "/zrE9zyK2iikJ8F2ls8YRCZD8wEi.jpg",
     "b": "/9AZq9CARteSIRa5tOCy1yjeVhm5.jpg",
     "l": "29384:13,29441:14,29504:15,29585:16,29665:17,29756:18,29829:19,29903:20,29981:21,30052:22,30128:23,30249:24,30286:25"
-  },
-  {
-    "id": 1975,
-    "n": "黑色五葉草 第二季",
-    "z": "黑色四叶草 第二季",
-    "t": "連載中(171)",
-    "y": "2026",
-    "s": 6.6,
-    "c": "/k7XtJOiflFofEOP8l5i75y4p5po.jpg",
-    "f": null,
-    "b": "/oUsm3pq6rUga7lVGQFS3g84etVE.jpg",
-    "l": "30281:171"
   },
   {
     "id": 1887,
