@@ -1,5 +1,65 @@
 [
   {
+    "id": 1985,
+    "n": "學生會也有洞！",
+    "z": "学生会也有洞！",
+    "t": "連載中(03)",
+    "y": "2026",
+    "s": 6.7,
+    "c": "/4EgNPER5TRh2wrfM59gQF2BJGze.jpg",
+    "f": null,
+    "b": "/kuYMjcQ6BeLTBYUR1l1T8W8ZMcf.jpg",
+    "l": "30295:1,30337:2,30393:3"
+  },
+  {
+    "id": 1978,
+    "n": "魔法★探險家",
+    "z": "魔法★探险家",
+    "t": "連載中(04)",
+    "y": "2026",
+    "s": 6.3,
+    "c": "/7V70UHOfMRef1vlsNX396MJQMmT.jpg",
+    "f": null,
+    "b": "/oxS6i62MRfIeXFKN2F3uEipKwt7.jpg",
+    "l": "30283:1,30285:2,30336:3,30392:4"
+  },
+  {
+    "id": 1976,
+    "n": "至高之力",
+    "z": "至高之力",
+    "t": "連載中(03)",
+    "y": "2026",
+    "s": 5.9,
+    "c": "/q4Frct3HP4eaFs7hc8fHq04Rl6Y.jpg",
+    "f": null,
+    "b": "/wNjJs2OronJm8jK4Y35R6kjH3sy.jpg",
+    "l": "30282:1,30335:2,30391:3"
+  },
+  {
+    "id": 1975,
+    "n": "黑色五葉草 第二季",
+    "z": "黑色五叶草 第二季",
+    "t": "連載中(173)",
+    "y": "2026",
+    "s": 7.6,
+    "c": "/nVKgwReZVFXLkpOV7PxE8dvX7wh.jpg",
+    "f": null,
+    "b": "/qu9epTZh29fGUkY7ZYc9PVsv0Ig.jpg",
+    "l": "30281:171,30369:172,30390:173"
+  },
+  {
+    "id": 1974,
+    "n": "轉生後的大聖女，極力隱瞞聖女的身分",
+    "z": "转生后的大圣女，极力隐瞒圣女的身份",
+    "t": "連載中(04)",
+    "y": "2026",
+    "s": 5.6,
+    "c": "/dwnkFRVIpT2eJEhfFsiVG1I4Crv.jpg",
+    "f": null,
+    "b": "/wpNi39uaat5A1VhaVpdcQlKuMB5.jpg",
+    "l": "30279:1,30280:2,30334:3,30389:4"
+  },
+  {
     "id": 1972,
     "n": "Keroro軍曹☆",
     "z": "青蛙军曹 FLASH版",
@@ -202,18 +262,6 @@
     "f": null,
     "b": "/f6MmtdKyrmUt2iHfhEKO6DgrL4a.jpg",
     "l": "30318:1,30371:2"
-  },
-  {
-    "id": 1975,
-    "n": "黑色五葉草 第二季",
-    "z": "黑色五叶草 第二季",
-    "t": "連載中(172)",
-    "y": "2026",
-    "s": 7.5,
-    "c": "/nVKgwReZVFXLkpOV7PxE8dvX7wh.jpg",
-    "f": null,
-    "b": "/qu9epTZh29fGUkY7ZYc9PVsv0Ig.jpg",
-    "l": "30281:171,30369:172"
   },
   {
     "id": 1995,
@@ -574,54 +622,6 @@
     "f": null,
     "b": "/2SRjaHJd4eW6aJ1rwUgGuXytps2.jpg",
     "l": "30291:1,30338:2"
-  },
-  {
-    "id": 1985,
-    "n": "學生會也有洞！",
-    "z": "学生会也有洞！",
-    "t": "連載中(02)",
-    "y": "2026",
-    "s": 6.7,
-    "c": "/4EgNPER5TRh2wrfM59gQF2BJGze.jpg",
-    "f": null,
-    "b": "/kuYMjcQ6BeLTBYUR1l1T8W8ZMcf.jpg",
-    "l": "30295:1,30337:2"
-  },
-  {
-    "id": 1978,
-    "n": "魔法★探險家",
-    "z": "魔法★探险家",
-    "t": "連載中(03)",
-    "y": "2026",
-    "s": 6,
-    "c": "/7V70UHOfMRef1vlsNX396MJQMmT.jpg",
-    "f": null,
-    "b": "/oxS6i62MRfIeXFKN2F3uEipKwt7.jpg",
-    "l": "30283:1,30285:2,30336:3"
-  },
-  {
-    "id": 1976,
-    "n": "至高之力",
-    "z": "至高之力",
-    "t": "連載中(02)",
-    "y": "2026",
-    "s": 6.1,
-    "c": "/q4Frct3HP4eaFs7hc8fHq04Rl6Y.jpg",
-    "f": null,
-    "b": "/wNjJs2OronJm8jK4Y35R6kjH3sy.jpg",
-    "l": "30282:1,30335:2"
-  },
-  {
-    "id": 1974,
-    "n": "轉生後的大聖女，極力隱瞞聖女的身分",
-    "z": "转生后的大圣女，极力隐瞒圣女的身份",
-    "t": "連載中(03)",
-    "y": "2026",
-    "s": 5.5,
-    "c": "/dwnkFRVIpT2eJEhfFsiVG1I4Crv.jpg",
-    "f": null,
-    "b": "/wpNi39uaat5A1VhaVpdcQlKuMB5.jpg",
-    "l": "30279:1,30280:2,30334:3"
   },
   {
     "id": 1855,
