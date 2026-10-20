@@ -1,5 +1,17 @@
 [
   {
+    "id": 1958,
+    "n": "BLEACH 死神 千年血戰篇-禍進譚-",
+    "z": "死神",
+    "t": "連載中(09)",
+    "y": "2004",
+    "s": 6.6,
+    "c": "/e0f7PbxksVMd3CoYweWMikzu6HO.jpg",
+    "f": "/uZM8PIaimoRxQ3vYqzpZOifGE6Y.jpg",
+    "b": "/o0NsbcIvsllg6CJX0FBFY8wWbsn.jpg",
+    "l": "29583:1,29645:2,29731:3,29818:4,29914:5,29967:6,30040:7,30114:8,30410:9"
+  },
+  {
     "id": 2008,
     "n": "藥師少女的獨語 第三季",
     "z": "药屋少女的呢喃 第三季",
@@ -495,7 +507,7 @@
     "id": 2009,
     "n": "闇機 DARK MACHINE",
     "z": "DARK MACHINE THE ANIMATION",
-    "t": "連載���(01)",
+    "t": "連載中(01)",
     "y": "2026",
     "s": 5.8,
     "c": "/hNNba8tLjCgRGcTSKcB1E0kpBhG.jpg",
@@ -1438,18 +1450,6 @@
     "f": "/o8Jo2wBncO3wqr2sDk30ktgejcm.jpg",
     "b": "/6AoGMlKo2DUsYWiF5zzjdRERCVi.jpg",
     "l": "29379:1,29381:2,29436:3,29497:4,29573:5,29647:6,29734:7,29821:8,29892:9,29970:10,30043:11,30117:12"
-  },
-  {
-    "id": 1958,
-    "n": "BLEACH 死神 千年血戰篇-禍進譚-",
-    "z": "死神",
-    "t": "連載中(08)",
-    "y": "2004",
-    "s": 6.6,
-    "c": "/e0f7PbxksVMd3CoYweWMikzu6HO.jpg",
-    "f": "/uZM8PIaimoRxQ3vYqzpZOifGE6Y.jpg",
-    "b": "/o0NsbcIvsllg6CJX0FBFY8wWbsn.jpg",
-    "l": "29583:1,29645:2,29731:3,29818:4,29914:5,29967:6,30040:7,30114:8"
   },
   {
     "id": 1906,
@@ -15591,7 +15591,7 @@
     "id": 713,
     "n": "閃亮 美妙☆頻道 第三季",
     "z": "美妙频道 第三季",
-    "t": "���載中(01)",
+    "t": "連載中(01)",
     "y": "2018",
     "s": 6.1,
     "c": "/KjPQEeKmlWSy20MQl5bUQxhjh5.jpg",
