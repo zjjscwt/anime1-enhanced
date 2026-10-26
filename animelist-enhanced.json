@@ -1,5 +1,41 @@
 [
   {
+    "id": 1989,
+    "n": "魔法少女育成計畫 restart",
+    "z": "魔法少女育成计划 restart",
+    "t": "連載中(04)",
+    "y": "2026",
+    "s": 6.2,
+    "c": "/s7WJ5gQSLwk5vVxwhzJDx94mMf6.jpg",
+    "f": null,
+    "b": "/a5ibYt8Ri2w74TR99lbP2aHyFMY.jpg",
+    "l": "30305:1,30357:2,30408:3,30462:4"
+  },
+  {
+    "id": 2008,
+    "n": "藥師少女的獨語 第三季",
+    "z": "药屋少女的呢喃 第三季",
+    "t": "連載中(52)",
+    "y": "2023",
+    "s": 7.3,
+    "c": "/woiIhg5ccepHROYWRjy9A0f562A.jpg",
+    "f": "/nUFTbH417TqmCbw2b2mPSAESoTb.jpg",
+    "b": "/gffVOVZ2Y9cmVIZ26Gt9ByMGCYH.jpg",
+    "l": "30351:49,30356:50,30409:51,30461:52"
+  },
+  {
+    "id": 1958,
+    "n": "BLEACH 死神 千年血戰篇-禍進譚-",
+    "z": "死神",
+    "t": "連載中(10)",
+    "y": "2004",
+    "s": 6.6,
+    "c": "/e0f7PbxksVMd3CoYweWMikzu6HO.jpg",
+    "f": "/uZM8PIaimoRxQ3vYqzpZOifGE6Y.jpg",
+    "b": "/o0NsbcIvsllg6CJX0FBFY8wWbsn.jpg",
+    "l": "29583:1,29645:2,29731:3,29818:4,29914:5,29967:6,30040:7,30114:8,30410:9,30460:10"
+  },
+  {
     "id": 1986,
     "n": "轉生哥布林有問題嗎？",
     "z": "转生哥布林有问题吗？",
@@ -230,10 +266,10 @@
   {
     "id": 1975,
     "n": "黑色五葉草 第二季",
-    "z": "黑色五叶草 第二季",
-    "t": "連載中(174)",
+    "z": "黑色四叶草 第二季",
+    "t": "��載中(174)",
     "y": "2026",
-    "s": 7.6,
+    "s": 7.7,
     "c": "/nVKgwReZVFXLkpOV7PxE8dvX7wh.jpg",
     "f": null,
     "b": "/qu9epTZh29fGUkY7ZYc9PVsv0Ig.jpg",
@@ -574,42 +610,6 @@
     "f": null,
     "b": "/71R1H3crMMHhIv48Cott4Q7RFwy.jpg",
     "l": "29536:1,29648:2,29650:3,29723:4,29801:5,29913:6,30050:7,30139:8,30235:9,30411:10"
-  },
-  {
-    "id": 1958,
-    "n": "BLEACH 死神 千年血戰篇-禍進譚-",
-    "z": "死神",
-    "t": "連載中(09)",
-    "y": "2004",
-    "s": 6.6,
-    "c": "/e0f7PbxksVMd3CoYweWMikzu6HO.jpg",
-    "f": "/uZM8PIaimoRxQ3vYqzpZOifGE6Y.jpg",
-    "b": "/o0NsbcIvsllg6CJX0FBFY8wWbsn.jpg",
-    "l": "29583:1,29645:2,29731:3,29818:4,29914:5,29967:6,30040:7,30114:8,30410:9"
-  },
-  {
-    "id": 2008,
-    "n": "藥師少女的獨語 第三季",
-    "z": "药屋少女的呢喃 第三季",
-    "t": "連載中(51)",
-    "y": "2023",
-    "s": 7.3,
-    "c": "/woiIhg5ccepHROYWRjy9A0f562A.jpg",
-    "f": "/nUFTbH417TqmCbw2b2mPSAESoTb.jpg",
-    "b": "/gffVOVZ2Y9cmVIZ26Gt9ByMGCYH.jpg",
-    "l": "30351:49,30356:50,30409:51"
-  },
-  {
-    "id": 1989,
-    "n": "魔法少女育成計畫 restart",
-    "z": "魔法少女育成计划 restart",
-    "t": "連載中(03)",
-    "y": "2026",
-    "s": 6.3,
-    "c": "/s7WJ5gQSLwk5vVxwhzJDx94mMf6.jpg",
-    "f": null,
-    "b": "/a5ibYt8Ri2w74TR99lbP2aHyFMY.jpg",
-    "l": "30305:1,30357:2,30408:3"
   },
   {
     "id": 2009,
